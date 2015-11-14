@@ -1,0 +1,241 @@
+package GUI;
+
+
+import java.awt.FlowLayout;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+import java.util.ArrayList;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JTextArea;
+
+@SuppressWarnings("serial")
+
+public class CALCULATOR2<operator> extends JFrame implements MouseListener{
+	//引入主方法
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		CALCULATOR2<Object> frm=new CALCULATOR2<Object>("计算器");
+		frm.setVisible(true);
+
+	}
+	    //创建按钮
+	    //0~9数字按钮
+	    private JButton Jb0=new JButton("0");
+	    private JButton Jb1=new JButton("1");
+	    private JButton Jb2=new JButton("2");
+	    private JButton Jb3=new JButton("3");
+	    private JButton Jb4=new JButton("4");
+	    private JButton Jb5=new JButton("5");
+	    private JButton Jb6=new JButton("6");
+	    private JButton Jb7=new JButton("7");
+	    private JButton Jb8=new JButton("8");
+	    private JButton Jb9=new JButton("9");
+	    //小数点和运算符
+	    private JButton Jbpoint=new JButton(".");
+	    private JButton Jbclear=new JButton("CE");
+	    private JButton Jbadd=new JButton("+");
+	    private JButton Jbsub=new JButton("-");
+	    private JButton Jbmul=new JButton("*");
+	    private JButton Jbdiv=new JButton("/");
+	    
+	    private JButton Jbequ=new JButton("=");
+	    JLabel lab=new JLabel("运算符");
+	   
+        //文本框
+	    private JTextArea input=new JTextArea(2,18);
+	    private JTextArea show=new JTextArea("result",2,18);
+	    //引入变量
+	    private Double num1;
+	    private Double num2;
+	    private Double sum;
+	    @SuppressWarnings("unused")
+		private ArrayList<Integer> signpos=new ArrayList<Integer>();
+	   
+	    CALCULATOR2 (String string){
+	    	//主面板
+	        setLayout(new FlowLayout(FlowLayout.LEADING));
+	        setSize(200, 300);
+	        setResizable(false);
+	        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	        setLocationRelativeTo(null);
+	        
+	        //加入按钮
+	        add(input);
+	        add(show);
+	        add(Jb7);
+	        add(Jb8);
+	        add(Jb9);
+	        add(Jbdiv);
+	        add(Jb4);
+	        add(Jb5);
+	        add(Jb6);
+	        add(Jbmul);
+	        
+	        add(Jb1);
+	        add(Jb2);
+	        add(Jb3);
+	        add(Jbsub);
+	        add(Jbclear);
+	        add(Jb0);
+	        add(Jbpoint);
+	       
+	        add(Jbadd);
+	        add(Jbequ);
+	        
+	        //注册监听
+	        Jb1.addMouseListener(this);
+	        Jb2.addMouseListener(this);
+	        Jb3.addMouseListener(this);
+	        Jb4.addMouseListener(this);
+	        Jb5.addMouseListener(this);
+	        Jb6.addMouseListener(this);
+	        Jb7.addMouseListener(this);
+	        Jb8.addMouseListener(this);
+	        Jb9.addMouseListener(this);
+	        Jbpoint.addMouseListener(this);
+	        Jbadd.addMouseListener(this);
+	        Jbsub.addMouseListener(this);
+	        Jbmul.addMouseListener(this);
+	        Jbdiv.addMouseListener(this);
+	        Jbequ.addMouseListener(this);
+	        Jbclear.addMouseListener(this);
+	 
+
+}
+
+
+
+
+
+        //运算实现
+		@SuppressWarnings("static-access")
+		@Override
+		public void mouseClicked(MouseEvent e) {
+			// TODO Auto-generated method stub
+			 if(e.getSource()==Jb0){
+				 input.setText(input.getText()+"0");
+			 }
+			 if(e.getSource()==Jb1){
+				 input.setText(input.getText()+"1");
+			 }
+			 if(e.getSource()==Jb2){
+				 input.setText(input.getText()+"2");
+			 }
+			 if(e.getSource()==Jb3){
+				 input.setText(input.getText()+"3");
+			 }if(e.getSource()==Jb4){
+				 input.setText(input.getText()+"4");
+			 }
+			 if(e.getSource()==Jb5){
+				 input.setText(input.getText()+"5");
+			 }
+			 if(e.getSource()==Jb6){
+				 input.setText(input.getText()+"6");
+			 }
+			 if(e.getSource()==Jb7){
+				 input.setText(input.getText()+"7");
+			 }
+			 if(e.getSource()==Jb8){
+				 input.setText(input.getText()+"8");
+			 }
+			 if(e.getSource()==Jb9){
+				 input.setText(input.getText()+"9");
+			 }
+			 if(e.getSource()==Jbpoint){
+				 num1=num1.parseDouble(input.getText());
+				 int temp = (int)num1;
+				 if(num1-temp==0||num1<1){
+				 input.setText(input.getText()+".");
+				 
+				 }
+			 }
+				 
+			 if(e.getSource()==Jbclear){
+				 input.setText("");
+			 }
+			 if(e.getSource()==Jbadd){
+				 lab.setText("+");
+				 num1=num1.parseDouble(input.getText());
+				 input.setText("");
+			 }
+			 if(e.getSource()==Jbsub){
+				 lab.setText("-");
+				 num1=num1.parseDouble(input.getText());
+				 input.setText("");
+			 }
+			 if(e.getSource()==Jbmul){
+				 lab.setText("*");
+				 num1=num1.parseDouble(input.getText());
+				 input.setText("");
+			 }
+			 if(e.getSource()==Jbdiv){
+				 lab.setText("/");
+				 num1=num1.parseDouble(input.getText());
+				 input.setText("");
+			 }
+			 if(e.getSource()==Jbequ){
+				 num2=num2.parseDouble(input.getText());
+				 switch(lab.getText()){
+				 case "+":sum=num1+num2;break;
+				 case "-":sum=num1-num2;break;
+				 case "*":sum=num1*num2;break;
+				 case "/":sum=num1/num2;break;
+				 }
+				 show.setText(sum.toString());}
+			 }
+				 
+				 
+			 
+			
+		
+
+
+
+
+
+
+		@Override
+		public void mouseEntered(MouseEvent arg0) {
+			// TODO Auto-generated method stub
+			
+		}
+
+
+
+
+
+
+		@Override
+		public void mouseExited(MouseEvent arg0) {
+			// TODO Auto-generated method stub
+			
+		}
+
+
+
+
+
+
+		@Override
+		public void mousePressed(MouseEvent arg0) {
+			// TODO Auto-generated method stub
+			
+		}
+
+
+
+
+
+
+		@Override
+		public void mouseReleased(MouseEvent arg0) {
+			// TODO Auto-generated method stub
+			
+		}
+		
+}		
+		
+		
